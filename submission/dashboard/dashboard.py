@@ -3,11 +3,16 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
 import streamlit as st
+import pandas as pd
+import os
+# Mendapatkan path absolut dari folder tempat script ini berada
+current_dir = os.path.dirname(os.path.abspath(__file__))
 
-# Load data
 @st.cache_data
 def load_data():
-    df = pd.read_csv('submission\\dashboard\\bike_hour.csv')
+    file_path = os.path.join(current_dir, "bike_hour.csv")
+    
+    df = pd.read_csv(file_path)
     df['dteday'] = pd.to_datetime(df['dteday'])
     df['month_year'] = df['dteday'].dt.to_period('M')
     return df
