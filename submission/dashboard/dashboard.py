@@ -7,7 +7,7 @@ import streamlit as st
 # Load data
 @st.cache_data
 def load_data():
-    df = pd.read_csv('submission\dashboard\bike_hour.csv')
+    df = pd.read_csv('submission\\dashboard\\bike_hour.csv')
     df['dteday'] = pd.to_datetime(df['dteday'])
     df['month_year'] = df['dteday'].dt.to_period('M')
     return df
